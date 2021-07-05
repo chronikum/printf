@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 13:43:08 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/05 08:32:00 by jfritz           ###   ########.fr        #
+#    Updated: 2021/07/05 09:32:50 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME=libftprintf.a
 CFLAGS = -Werror -Wall -Wextra
 
 OBJS := $(*.o)
-SRC = ft_printf.c ft_utils.c
+SRC = ft_printf.c ft_utils.c ft_available_types.c
 
 all: $(NAME)
 

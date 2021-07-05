@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/06/23 09:41:34 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 09:48:51 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
+
+void	ft_putunbr_fd(unsigned int n, int fd);
 
 #endif
