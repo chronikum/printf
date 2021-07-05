@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 09:50:09 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 10:45:19 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,12 @@
 
 int ft_printf(const char *format, ...)
 {
-	int argc;
 	va_list args;
 	int i;
-	int arg_found_counter;
-
-	argc = 0;
-	i = 0;
-	arg_found_counter = 0;
+	int l;
 	
-	argc = ft_argument_count((char *)format);
-	if (argc == 0)
-	{
-		ft_putstr_fd((char *) format, 1);
-		return 0;
-	}
+	i = 0;
+	l = 0;
 	
 	va_start(args, format);
 	while (format[i])
@@ -37,41 +28,31 @@ int ft_printf(const char *format, ...)
 		if (format[i - 1] == '%' && ft_is_available_type(format[i]))
 		{
 			if (format[i] == 'd')
-			{
-				int iprint = va_arg(args, int);
-				ft_putnbr_fd(iprint, 1);
-			}
+				l += ft_putint(va_arg(args, int));
 			if (format[i] == 'c')
-			{
-				int cprint = va_arg(args, int);
-				ft_putchar_fd((char) cprint, 1);
-			}
+				l += ft_putchar((char) va_arg(args, int));
 			if (format[i] == 's')
-			{
-				char *cpprint = va_arg(args, char*);
-				ft_putstr_fd(cpprint, 1);
-			}
+				l += ft_putstr(va_arg(args, char *));
 			if (format[i] == 'u')
-			{
-				unsigned int usiprint = va_arg(args, unsigned int);
-				ft_putunbr_fd(usiprint, 1);
-			}
+				l += ft_putuint(va_arg(args, unsigned int));
+			if (format[i] == 'p')
+				ft_putaddr_fd(va_arg(args, void *), 1, sizeof(va_arg(args, void *)));
 		} 
 		else if ((format[i] == '%' && format[i - 1] == '%') || format[i] != '%')
-		{
-			ft_putchar_fd(format[i], 1);
-		}
+			l += ft_putchar(format[i]);
 		i++;
 	}
 	va_end(args);
+
+	printf("STR LENGTH; %d", l);
 	return 0;
 }
 
 
 int main()
 {
-	ft_printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u\n", 123123, 4444, "TESTSTRING", -1);
-	   printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u", 123123, 4444, "TESTSTRING", -1);
+	ft_printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u\n", 123123, 4444, "TESTSTRING", 429496729);
+	   printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u", 123123, 4444, "TESTSTRING", 429496729);
 
 	return 0;
 }

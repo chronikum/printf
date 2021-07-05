@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_putuint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 07:51:18 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 09:54:18 by jfritz           ###   ########.fr       */
+/*   Created: 2021/07/05 10:35:39 by jfritz            #+#    #+#             */
+/*   Updated: 2021/07/05 10:41:22 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-// int ft_argument_count(char *format)
-// {
-// 	char percent;
-// 	int count;
+static int	ft_numberlength(unsigned int n)
+{
+	unsigned int	o;
+	unsigned int	l;
 
-// 	count = 0;
-// 	percent = '%';
-// 	while (ft_strchr(format, (int) percent) != NULL)
-// 	{
-// 		format = ft_strchr(format, (int) percent);
-// 		format++;
-// 		count++;
-// 	}
-// 	return count;
-// }
+	o = n;
+	l = 0;
+	if (n < 0)
+		o = -o;
+	while (o > 0)
+	{
+		o /= 10;
+		l++;
+	}
+	return (l);
+}
+int ft_putuint(unsigned int n)
+{
+	ft_putunbr_fd(n, 1);
+
+	return (ft_numberlength(n));
+}

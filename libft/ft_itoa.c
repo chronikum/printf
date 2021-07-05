@@ -6,13 +6,13 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 16:58:31 by jfritz            #+#    #+#             */
-/*   Updated: 2021/06/20 19:48:48 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 10:39:29 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_numberlength(int n)
+static int	ft_numberlength(int n)
 {
 	int	o;
 	int	l;

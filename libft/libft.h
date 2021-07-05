@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 09:48:51 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 10:20:55 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 
 void	ft_putunbr_fd(unsigned int n, int fd);
+void	ft_putaddr_fd(void *p, int fd, size_t bytesize);
 
 #endif

@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 07:51:18 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 09:54:18 by jfritz           ###   ########.fr       */
+/*   Created: 2021/07/05 10:24:39 by jfritz            #+#    #+#             */
+/*   Updated: 2021/07/05 10:39:49 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+# include "../ft_printf.h"
 
-// int ft_argument_count(char *format)
-// {
-// 	char percent;
-// 	int count;
+int	ft_putchar(char c)
+{
+	ft_putchar_fd(c, 1);
 
-// 	count = 0;
-// 	percent = '%';
-// 	while (ft_strchr(format, (int) percent) != NULL)
-// 	{
-// 		format = ft_strchr(format, (int) percent);
-// 		format++;
-// 		count++;
-// 	}
-// 	return count;
-// }
+	return (1);
+}
