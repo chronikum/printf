@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putunlong.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 09:43:03 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 11:04:08 by jfritz           ###   ########.fr       */
+/*   Created: 2021/07/05 11:04:12 by jfritz            #+#    #+#             */
+/*   Updated: 2021/07/05 12:54:33 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd);
-
-static int	ft_check_biggest_unsigned(unsigned int n, int fd)
+static int	ft_check_biggest_unsigned(unsigned long n, int fd)
 {
-	if (n == 4294967295)
+	if (n == 18446744073709551615lu)
 	{
-		ft_putstr_fd("4294967295", fd);
+		ft_putstr_fd("18446744073709551615", fd);
 		return (1);
 	}
 	return (0);
 }
 
-void	ft_putunbr_fd(unsigned int n, int fd)
+void	ft_putunlong(unsigned long n, int fd)
 {
-	unsigned int	t;
+	unsigned long	t;
 	char			c;
 
 	t = 0;
@@ -38,7 +36,7 @@ void	ft_putunbr_fd(unsigned int n, int fd)
 			t = n % 10;
 			n /= 10;
 			c = t + 48;
-			ft_putunbr_fd(n, fd);
+			ft_putunlong(n, fd);
 		}
 		else
 		{

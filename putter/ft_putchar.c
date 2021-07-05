@@ -6,15 +6,14 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 10:24:39 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 10:39:49 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 13:38:07 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../ft_printf.h"
+#include "../ft_printf.h"
 
 int	ft_putchar(char c)
 {
 	ft_putchar_fd(c, 1);
-
 	return (1);
 }

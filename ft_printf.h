@@ -1,5 +1,5 @@
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include "./libft/libft.h"
 # include <stdlib.h>
@@ -11,8 +11,9 @@ int	ft_is_available_type(char c);
 int	ft_printf(const char *format, ...);
 
 
-int	ft_putchar(char c);
-int	ft_putint(int n);
-int ft_putstr(char *c);
-int	ft_putuint(unsigned int n);
+int		ft_putchar(char c);
+int		ft_putint(int n);
+int 	ft_putstr(char *c);
+int		ft_putuint(unsigned int n);
+void	ft_putunlonglong(unsigned long long n, int fd);
 #endif

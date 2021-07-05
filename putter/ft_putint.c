@@ -6,11 +6,11 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 10:26:08 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 10:40:56 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 13:37:57 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../ft_printf.h"
+#include "../ft_printf.h"
 
 static int	ft_numberlength(int n)
 {
@@ -29,9 +29,8 @@ static int	ft_numberlength(int n)
 	return (l);
 }
 
-int ft_putint(int n)
+int	ft_putint(int n)
 {
 	ft_putunbr_fd(n, 1);
-
 	return (ft_numberlength(n));
 }
