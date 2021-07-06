@@ -6,13 +6,16 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 09:59:01 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 13:38:25 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 15:26:36 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	ft_putaddr_fd(void *p, int fd)
+char	*ft_putaddr_fd(void *p)
 {
-	ft_putunlonglong((unsigned long long) p, fd);
+	char *str = "";
+	printf("TEST: %s", ft_dec_to_hex((unsigned long long) p, str));
+	return ft_dec_to_hex((unsigned long long) p, str);
 }

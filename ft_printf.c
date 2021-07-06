@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 13:32:28 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/05 15:18:07 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int ft_printf(const char *format, ...)
 			if (format[i] == 'u')
 				l += ft_putuint(va_arg(args, unsigned int));
 			if (format[i] == 'p')
-				ft_putaddr_fd(va_arg(args, void *), 1);
+				ft_putstr(ft_putaddr_fd(va_arg(args, void *)));
 		} 
 		else if ((format[i] == '%' && format[i - 1] == '%') || format[i] != '%')
 			l += ft_putchar(format[i]);
@@ -50,8 +50,8 @@ int ft_printf(const char *format, ...)
 int main()
 {
 	char *pointed = "Pointed";
-	ft_printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u %i %p\n", 123123, 4444, "TESTSTRING", 429496729, 12, (unsigned long long) &pointed);
-	   printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u %i %llu", 123123, 4444, "TESTSTRING", 429496729, 12, (unsigned long long) &pointed);
+	ft_printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u %i %p\n", 123123, 4444, "TESTSTRING", 429496729, 12, &pointed);
+	   printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u %i %p", 123123, 4444, "TESTSTRING", 429496729, 12, &pointed);
 
 	return 0;
 }
