@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:35:22 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 13:24:58 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 14:49:24 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
-
-static int	ft_inset(char c, char const *set)
-{
-	int	count;
-
-	count = 0;
-	while (set[count])
-	{
-		if (c == set[count])
-			return (1);
-		count++;
-	}
-	return (0);
-}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

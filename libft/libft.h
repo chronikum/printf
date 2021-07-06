@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 13:22:44 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 14:49:26 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,6 @@ char	*ft_strupper(char *str);
 char	*ft_strsetchrstop(char *str, char *set, char stop);
 int		ft_matches_type(char c);
 
+char		ft_getlastchar(char *str);
+int			ft_inset(char c, char const *set);
 #endif
