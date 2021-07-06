@@ -6,53 +6,51 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 13:46:30 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 15:55:34 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 09:48:56 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static char *ft_append_character(char *str, char c)
+char	*ft_strcat(char *dest, char *src)
 {
-	char	*ret;
-	size_t	i;
+	int i;
+	int j;
 
 	i = 0;
-	ret = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	
-	while (str[i])
-	{
-		ret[i] = str[i];
-		printf("%c", str[i]);
+	j = 0;
+	while (dest[i])
 		i++;
+	while (src[j] != '\0')
+	{
+		dest[i + j] = src[j];
+		j++;
 	}
-	ret[i] = c;
-	i++;
-	ret[i] = '\0';
-	return ret;
+	dest[i + j] = '\0';
+	return (dest);
 }
 
 char	*ft_dec_to_hex(unsigned long long n, char *str)
 {
 	unsigned long long	o = 0;
+	char r[2];
 	
 	if(n == 0)
-	{
-		printf("DONE!");
 		return str;
-	}
-	o=n % 16;
-	ft_dec_to_hex(n/16, str);
+	
+	o = n % 16;
+	ft_dec_to_hex((n / 16), str);
 	if(o > 9)
 	{
-		char c = 'A' + (o - 10);
-		str = ft_append_character(str, c);
+		r[0] = 'A' + (o - 10);
 	}
 	else
 	{
-		str = ft_append_character(str, (o + 48));
+		r[0] = (o + 48);
 	}
-	printf("TEST %s  TEST", str);
+	r[1] = '\0';
+	r[0] = ft_tolower(r[0]);
+	str = ft_strcat(str, &r[0]);
 	return str;
 }
