@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 10:57:01 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 13:22:44 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ void	ft_putunlonglong(unsigned long long n, int fd);
 char	*ft_dec_to_hex(unsigned long long n, char *str);
 
 char	*ft_strupper(char *str);
+char	*ft_strsetchrstop(char *str, char *set, char stop);
+int		ft_matches_type(char c);
 
 #endif
