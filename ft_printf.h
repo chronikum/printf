@@ -16,4 +16,5 @@ int		ft_putint(int n);
 int 	ft_putstr(char *c);
 int		ft_putuint(unsigned int n);
 void	ft_putunlonglong(unsigned long long n, int fd);
+char	*ft_put_hex(unsigned long long p);
 #endif

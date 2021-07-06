@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 13:43:08 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/05 10:38:50 by jfritz           ###   ########.fr        #
+#    Updated: 2021/07/06 10:46:07 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ NAME=libftprintf.a
 CFLAGS = -Werror -Wall -Wextra
 
 OBJS := $(*.o)
-SRC = ft_printf.c ft_utils.c ft_available_types.c
+SRC = ft_printf.c ft_available_types.c
 
-PUTTER = ./putter/ft_putchar.c ./putter/ft_putint.c ./putter/ft_putstr.c ./putter/ft_putuint.c
+PUTTER = ./putter/ft_putchar.c ./putter/ft_putint.c ./putter/ft_putstr.c ./putter/ft_putuint.c ./putter/ft_put_hex.c
 
 all: $(NAME)
 

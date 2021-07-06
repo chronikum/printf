@@ -6,14 +6,14 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 13:46:30 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 09:48:56 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 10:46:50 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_strcat(char *dest, char *src)
+static char	*ft_strcat(char *dest, char *src)
 {
 	int i;
 	int j;
@@ -38,7 +38,6 @@ char	*ft_dec_to_hex(unsigned long long n, char *str)
 	
 	if(n == 0)
 		return str;
-	
 	o = n % 16;
 	ft_dec_to_hex((n / 16), str);
 	if(o > 9)

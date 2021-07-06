@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_put_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 07:51:18 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 09:54:18 by jfritz           ###   ########.fr       */
+/*   Created: 2021/07/06 10:44:40 by jfritz            #+#    #+#             */
+/*   Updated: 2021/07/06 10:48:50 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-// int ft_argument_count(char *format)
-// {
-// 	char percent;
-// 	int count;
-
-// 	count = 0;
-// 	percent = '%';
-// 	while (ft_strchr(format, (int) percent) != NULL)
-// 	{
-// 		format = ft_strchr(format, (int) percent);
-// 		format++;
-// 		count++;
-// 	}
-// 	return count;
-// }
+char	*ft_put_hex(unsigned long long p)
+{
+	char *hex = malloc(sizeof(char) * 12);
+	if (p == 0)
+		return "0";
+	return ft_dec_to_hex((unsigned long long) p, hex);
+}
