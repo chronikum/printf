@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 10:48:09 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 10:58:16 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int ft_printf(const char *format, ...)
 				ft_putstr(ft_putaddr_fd(va_arg(args, void *)));
 			if (format[i] == 'x')
 				ft_putstr(ft_put_hex(va_arg(args, unsigned long long)));
+			if (format[i] == 'X')
+				ft_putstr(ft_strupper(ft_put_hex(va_arg(args, unsigned long long))));
 		} 
 		else if ((format[i] == '%' && format[i - 1] == '%') || format[i] != '%')
 			l += ft_putchar(format[i]);

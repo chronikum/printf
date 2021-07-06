@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 09:34:33 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 10:57:01 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ char	*ft_putaddr_fd(void *p);
 void	ft_putunlong(unsigned long n, int fd);
 void	ft_putunlonglong(unsigned long long n, int fd);
 char	*ft_dec_to_hex(unsigned long long n, char *str);
+
+char	*ft_strupper(char *str);
 
 #endif
