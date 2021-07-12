@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 13:43:08 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/12 16:21:25 by jfritz           ###   ########.fr        #
+#    Updated: 2021/07/12 16:45:52 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = libftprintf.a
 
 CFLAGS = -Werror -Wall -Wextra
 
-OBJS := $(*.o)
+OBJS := *.o
 SRC = ft_printf.c ft_available_types.c
 
 PUTTER = ./putter/ft_putchar.c ./putter/ft_putint.c ./putter/ft_putstr.c ./putter/ft_putuint.c ./putter/ft_put_hex.c
@@ -28,8 +28,8 @@ all: $(NAME)
 ${NAME}:
 	make -C ./libft
 	cp ./libft/$(LIBFTNAME) $(LIBFTNAME)
-	${CC} ${CFLAGS} -c ${SRC}
-	ar rc ${NAME} *.o $(LIBFTNAME)
+	${CC} ${CFLAGS} -c ${SRC} $(PUTTER)
+	ar rc ${NAME} ${OBJS} $(LIBFTNAME)
 
 dev: fclean
 	make -C ./libft

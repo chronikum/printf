@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/12 16:01:46 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/12 16:54:36 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,4 @@ int ft_printf(const char *format, ...)
 	l = ft_match_type((char *) format, args, l);
 	va_end(args);
 	return l;
-}
-
-
-int main()
-{
-	char *testpointer = NULL;
-	int int1 = 2147483647;
-	int int2 = 4444;
-	int int3 = -123;
-	int int4 = -444;
-	
-	int ml = ft_printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% %% %% test mich %u %i %p %x %s %d\n", int1, int2, "TEST ME", int3, int4, testpointer, int4, NULL, 4);
-	int pl =    printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% %% %% test mich %u %i %p %x %s %d\n", int1, int2, "TEST ME", int3, int4, testpointer, int4, NULL, 4);
-
-	int ml2 =    printf("AAA %% AAA %d\n", -0);
-	int pl2 =    printf("AAA %% AAA %d\n", -0);
-	printf("================\n");
-	printf("PRINTFLENGTH: %d\n", ml);
-	printf("PRINTFLENGTH: %d\n", pl);
-	printf("================\n");
-	printf("PRINTFLENGTH: %d\n", ml2);
-	printf("PRINTFLENGTH: %d\n", pl2);
-	return 0;
 }

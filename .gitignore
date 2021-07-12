@@ -4,3 +4,4 @@ a.out
 *.a
 settings.json
 main.c
+ft_printf.h.gch
