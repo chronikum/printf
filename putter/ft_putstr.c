@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 10:28:27 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 13:37:38 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/12 10:53:32 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_putstr(char *c)
 {
+	if (!c)
+		c = "(null)";
 	ft_putstr_fd(c, 1);
 	return (ft_strlen(c));
 }

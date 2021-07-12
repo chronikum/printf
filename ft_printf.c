@@ -6,58 +6,23 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 16:46:22 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/12 10:56:20 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include "ft_printf.h"
-
-/*
-	Writes the detected pattern with the flags and the type in the char
-	pointer "pattern".
-	Will return the length if the first index of format is the beginning of the
-	pattern and it is also valid.
-	This pattern can be used afterwards in the ft_str function.
-	If it is invalid, the return value will be equal to 0
-
-	This works by counting how long a pattern is - we will start
-	counting beginning from %. After that we check for the allowed
-	symbols: -0.* until we found one of the "cdpdiuxXs" flags.
-*/
-static int ft_get_pattern(char *format, char **pattern)
-{
-	int length;
-	
-	length = 0;
-	if (format[0] == '%')
-	{
-		while (ft_inset(format[length], "-0.*") 
-			|| (ft_inset(format[length], "cdpdiuxXs%")))
-		{
-			length++;
-			if (ft_inset(format[length], "cdpdiuxXs%"))
-				break;
-		}
-		printf("%d", length);
-		*pattern = format;
-	}
-
-	if (length == 0)
-		return (0);
-	return length;
-}
+#include "ft_printf.h" 
 
 static void	ft_match_type(char *format, va_list args, int l)
 {
 	int i;
-	char *pattern;
+	int p;
 
 	i = 0;
+	p = 0;
 	while (format[i])
 	{
-		int length = ft_get_pattern(&format[i], &pattern);
-		if (format[i - (1 + length)] == '%' && ft_is_available_type(format[i]))
+		if (format[i - 1] == '%' && ft_is_available_type(format[i]))
 		{
 			if (format[i] == 'd' || format[i] == 'i')
 				l += ft_putint(va_arg(args, int));
@@ -74,17 +39,20 @@ static void	ft_match_type(char *format, va_list args, int l)
 			if (format[i] == 'X')
 				l += ft_putstr(ft_put_hex(va_arg(args, unsigned long long), 1));
 			if (format[i] == '%')
-				l += ft_putstr("%");
+			{
+				p++;
+				if (p % 2 == 0)
+					l += ft_putchar('%');
+			}
 		} 
 		else if (format[i] != '%')
 			l += ft_putchar(format[i]);
+		if (format[i + 1] != '%')
+			p = 1;
 		i++;
 	}
 }
 
-/*
-	You know what printf does do you?
-*/
 int ft_printf(const char *format, ...)
 {
 	va_list args;
@@ -102,13 +70,12 @@ int ft_printf(const char *format, ...)
 
 int main()
 {
-	char *testpointer = "TEST";
-	ft_printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u %i %p %x\n", 123123, 4444, "TESTSTRING", 429496729, 12, testpointer, 888888);
-	   printf("Teasdasdasdsdst! %d %d %s Das ist ziemlich cool! %% test mich %u %i %p %x", 123123, 4444, "TESTSTRING", 429496729, 12, testpointer, 888888);
-	printf("  %10d   \n", 1212);
-	printf("  %s   \n", "TEST");
-
-	printf("  %d   ", 123);
+	char *testpointer = NULL;
+	int int1 = 123123;
+	int int2 = 4444;
+	ft_printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% test mich %u %i %p %x\n", int1, int2, "TEST ME", 429496729, 12, testpointer, 888888);
+	// ft_printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% test mich %u %i %p %x\n", 123123, 4444, "TEST ME", 429496729, 12, testpointer, 888888);
+	   printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% test mich %u %i %p %x\n", int1, int2, "TEST ME", 429496729, 12, testpointer, 888888);
 
 	return 0;
 }
