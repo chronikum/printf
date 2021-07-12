@@ -6,14 +6,14 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/12 10:56:20 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/12 16:01:46 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "ft_printf.h" 
 
-static void	ft_match_type(char *format, va_list args, int l)
+static int	ft_match_type(char *format, va_list args, int l)
 {
 	int i;
 	int p;
@@ -35,9 +35,9 @@ static void	ft_match_type(char *format, va_list args, int l)
 			if (format[i] == 'p')
 				l += ft_putstr(ft_putaddr_fd(va_arg(args, void *)));
 			if (format[i] == 'x')
-				l += ft_putstr(ft_put_hex(va_arg(args, unsigned long long), 0));
+				l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 0));
 			if (format[i] == 'X')
-				l += ft_putstr(ft_put_hex(va_arg(args, unsigned long long), 1));
+				l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 1));
 			if (format[i] == '%')
 			{
 				p++;
@@ -51,6 +51,7 @@ static void	ft_match_type(char *format, va_list args, int l)
 			p = 1;
 		i++;
 	}
+	return (l + 1);
 }
 
 int ft_printf(const char *format, ...)
@@ -62,20 +63,30 @@ int ft_printf(const char *format, ...)
 	l = 0;
 	beginning = "";
 	va_start(args, format);
-	ft_match_type((char *) format, args, l);
+	l = ft_match_type((char *) format, args, l);
 	va_end(args);
-	return 0;
+	return l;
 }
 
 
 int main()
 {
 	char *testpointer = NULL;
-	int int1 = 123123;
+	int int1 = 2147483647;
 	int int2 = 4444;
-	ft_printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% test mich %u %i %p %x\n", int1, int2, "TEST ME", 429496729, 12, testpointer, 888888);
-	// ft_printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% test mich %u %i %p %x\n", 123123, 4444, "TEST ME", 429496729, 12, testpointer, 888888);
-	   printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% test mich %u %i %p %x\n", int1, int2, "TEST ME", 429496729, 12, testpointer, 888888);
+	int int3 = -123;
+	int int4 = -444;
+	
+	int ml = ft_printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% %% %% test mich %u %i %p %x %s %d\n", int1, int2, "TEST ME", int3, int4, testpointer, int4, NULL, 4);
+	int pl =    printf("Teasdasdasdsdst! %%%%%%%%%%%%%%%% %% %d %d %s %%%%%%%% Das ist ziemlich cool! %% %% %% test mich %u %i %p %x %s %d\n", int1, int2, "TEST ME", int3, int4, testpointer, int4, NULL, 4);
 
+	int ml2 =    printf("AAA %% AAA %d\n", -0);
+	int pl2 =    printf("AAA %% AAA %d\n", -0);
+	printf("================\n");
+	printf("PRINTFLENGTH: %d\n", ml);
+	printf("PRINTFLENGTH: %d\n", pl);
+	printf("================\n");
+	printf("PRINTFLENGTH: %d\n", ml2);
+	printf("PRINTFLENGTH: %d\n", pl2);
 	return 0;
 }

@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 13:43:08 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/06 10:46:07 by jfritz           ###   ########.fr        #
+#    Updated: 2021/07/12 16:21:25 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 LIBFTNAME = libft.a
 
-NAME=libftprintf.a
+NAME = libftprintf.a
 
 CFLAGS = -Werror -Wall -Wextra
 
@@ -29,7 +29,7 @@ ${NAME}:
 	make -C ./libft
 	cp ./libft/$(LIBFTNAME) $(LIBFTNAME)
 	${CC} ${CFLAGS} -c ${SRC}
-	ar rc ${NAME} *.o
+	ar rc ${NAME} *.o $(LIBFTNAME)
 
 dev: fclean
 	make -C ./libft

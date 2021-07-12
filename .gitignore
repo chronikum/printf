@@ -3,3 +3,4 @@ a.out
 .DS_Store
 *.a
 settings.json
+main.c
