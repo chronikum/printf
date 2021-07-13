@@ -6,45 +6,59 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/12 16:54:36 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 09:49:38 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include "ft_printf.h" 
+#include "ft_printf.h"
 
-static int	ft_match_type(char *format, va_list args, int l)
+static int	ft_handle_percent(int *p)
 {
-	int i;
-	int p;
+	(*p)++;
+	if (*p % 2 == 0)
+	{
+		ft_putchar('%');
+		return (1);
+	}
+	return (0);
+}
+
+static int	ft_check_type(char format, va_list args, int *p)
+{
+	int	l;
+
+	l = 0;
+	if (format == 'd' || format == 'i')
+		l += ft_putint(va_arg(args, int));
+	if (format == 'c')
+		l += ft_putchar((char) va_arg(args, int));
+	if (format == 's')
+		l += ft_putstr(va_arg(args, char *));
+	if (format == 'u')
+		l += ft_putuint(va_arg(args, unsigned int));
+	if (format == 'p')
+		l += ft_putstr(ft_putaddr_fd(va_arg(args, void *)));
+	if (format == 'x')
+		l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 0));
+	if (format == 'X')
+		l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 1));
+	if (format == '%')
+		l += ft_handle_percent(p);
+	return (l);
+}
+
+static int	ft_print_format(char *format, va_list args, int l)
+{
+	int	i;
+	int	p;
 
 	i = 0;
 	p = 0;
 	while (format[i])
 	{
 		if (format[i - 1] == '%' && ft_is_available_type(format[i]))
-		{
-			if (format[i] == 'd' || format[i] == 'i')
-				l += ft_putint(va_arg(args, int));
-			if (format[i] == 'c')
-				l += ft_putchar((char) va_arg(args, int));
-			if (format[i] == 's')
-				l += ft_putstr(va_arg(args, char *));
-			if (format[i] == 'u')
-				l += ft_putuint(va_arg(args, unsigned int));
-			if (format[i] == 'p')
-				l += ft_putstr(ft_putaddr_fd(va_arg(args, void *)));
-			if (format[i] == 'x')
-				l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 0));
-			if (format[i] == 'X')
-				l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 1));
-			if (format[i] == '%')
-			{
-				p++;
-				if (p % 2 == 0)
-					l += ft_putchar('%');
-			}
-		} 
+			l += ft_check_type(format[i], args, &p);
 		else if (format[i] != '%')
 			l += ft_putchar(format[i]);
 		if (format[i + 1] != '%')
@@ -54,16 +68,14 @@ static int	ft_match_type(char *format, va_list args, int l)
 	return (l + 1);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int l;
-	char *beginning;
-	
+	va_list	args;
+	int		l;
+
 	l = 0;
-	beginning = "";
 	va_start(args, format);
-	l = ft_match_type((char *) format, args, l);
+	l = ft_print_format((char *) format, args, l);
 	va_end(args);
-	return l;
+	return (l);
 }
