@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 13:43:08 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/13 09:39:42 by jfritz           ###   ########.fr        #
+#    Updated: 2021/07/13 11:54:52 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 NAME = libftprintf.a
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 OBJS := *.o
 SRC = ft_printf.c ft_available_types.c main.c

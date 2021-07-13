@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 09:59:01 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/13 09:57:57 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 13:26:52 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ char	*ft_putaddr_fd(void *p)
 
 	prefix = "0x";
 	addr = malloc(sizeof(char) * 12);
-	if (!p)
+	if (!p || !addr)
+	{
+		free(addr);
 		return ("0x0");
+	}
 	return (ft_strjoin(prefix, ft_dec_to_hex((unsigned long long) p, addr)));
 }
