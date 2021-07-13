@@ -6,13 +6,13 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 13:46:30 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/13 17:02:27 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 17:05:44 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_dec_to_hex(unsigned long long n, int lower, int reset)
+int	ft_dec_to_hex(unsigned long long n, int lower, int reset)
 {
 	unsigned long long	o;
 	char				r;
