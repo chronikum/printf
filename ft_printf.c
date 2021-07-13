@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/13 09:49:38 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 10:48:21 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ft_print_format(char *format, va_list args, int l)
 	int	p;
 
 	i = 0;
-	p = 0;
+	p = 1;
 	while (format[i])
 	{
 		if (format[i - 1] == '%' && ft_is_available_type(format[i]))
@@ -65,7 +65,7 @@ static int	ft_print_format(char *format, va_list args, int l)
 			p = 1;
 		i++;
 	}
-	return (l + 1);
+	return (l);
 }
 
 int	ft_printf(const char *format, ...)

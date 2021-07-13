@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 10:35:39 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/05 13:36:59 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 10:52:41 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ static int	ft_numberlength(unsigned int n)
 int	ft_putuint(unsigned int n)
 {
 	ft_putunbr_fd(n, 1);
+	if (n == 0)
+		return (1);
 	return (ft_numberlength(n));
 }

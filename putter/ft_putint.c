@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 10:26:08 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/12 14:43:16 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 10:51:31 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 static int	ft_numberlength(int n)
 {
-	int	o;
-	int	l;
+	unsigned int	o;
+	int				l;
 
-	o = n;
 	l = 0;
 	if (n < 0)
-		o = -o;
+	{
+		o = -n;
+	}
+	else
+	{
+		o = n;
+	}
 	while (o > 0)
 	{
 		o /= 10;
@@ -32,5 +37,9 @@ static int	ft_numberlength(int n)
 int	ft_putint(int n)
 {
 	ft_putnbr_fd(n, 1);
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		return (ft_numberlength(n) + 1);
 	return (ft_numberlength(n));
 }
