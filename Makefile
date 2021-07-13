@@ -6,20 +6,18 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 13:43:08 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/12 16:45:52 by jfritz           ###   ########.fr        #
+#    Updated: 2021/07/13 09:39:42 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-
-LIBFTNAME = libft.a
 
 NAME = libftprintf.a
 
 CFLAGS = -Werror -Wall -Wextra
 
 OBJS := *.o
-SRC = ft_printf.c ft_available_types.c
+SRC = ft_printf.c ft_available_types.c main.c
 
 PUTTER = ./putter/ft_putchar.c ./putter/ft_putint.c ./putter/ft_putstr.c ./putter/ft_putuint.c ./putter/ft_put_hex.c
 
@@ -27,14 +25,14 @@ all: $(NAME)
 
 ${NAME}:
 	make -C ./libft
-	cp ./libft/$(LIBFTNAME) $(LIBFTNAME)
+	cp ./libft/libft.a $(NAME)
 	${CC} ${CFLAGS} -c ${SRC} $(PUTTER)
-	ar rc ${NAME} ${OBJS} $(LIBFTNAME)
+	ar rcs ${NAME} ${OBJS}
 
 dev: fclean
 	make -C ./libft
-	cp ./libft/$(LIBFTNAME) $(LIBFTNAME)
-	${CC} ${CFLAGS} ${SRC} $(PUTTER) ${LIBFTNAME}
+	cp ./libft/libft.a $(NAME)
+	${CC} ${CFLAGS} ${SRC} $(PUTTER) ${NAME}
 
 bonus:
 	${CC} ${CFLAGS} -c ${BNS}
@@ -47,5 +45,5 @@ fclean: clean
 	rm -f $(NAME)
 	rm -f $(LIBFTNAME)
 	cd ./libft && make fclean
-	
+
 re: clean ${NAME}
