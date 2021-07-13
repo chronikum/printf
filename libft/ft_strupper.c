@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 10:51:46 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/06 10:56:46 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 09:58:28 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strupper(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -23,5 +23,5 @@ char	*ft_strupper(char *str)
 			str[i] = (char) ft_toupper((int) str[i]);
 		i++;
 	}
-	return str;
+	return (str);
 }
