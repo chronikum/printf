@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/13 11:36:41 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 16:23:04 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ static int	ft_check_type(char format, va_list args, int *p)
 	if (format == 'u')
 		l += ft_putuint(va_arg(args, unsigned int));
 	if (format == 'p')
-		l += ft_putstr(ft_putaddr_fd(va_arg(args, void *)));
+		l += ft_putaddr_fd(va_arg(args, void *));
 	if (format == 'x')
-		l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 0));
+		l += ft_put_hex(va_arg(args, unsigned int), 0);
 	if (format == 'X')
-		l += ft_putstr(ft_put_hex(va_arg(args, unsigned int), 1));
+		l += ft_put_hex(va_arg(args, unsigned int), 1);
 	if (format == '%')
 		l += ft_handle_percent(p);
 	return (l);

@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/13 09:53:54 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/13 16:25:23 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 
 void	ft_putunbr_fd(unsigned int n, int fd);
-char	*ft_putaddr_fd(void *p);
+int		ft_putaddr_fd(void *p);
 void	ft_putunlong(unsigned long n, int fd);
 void	ft_putunlonglong(unsigned long long n, int fd);
-char	*ft_dec_to_hex(unsigned long long n, char *str);
+int		ft_dec_to_hex(unsigned long long n, int lower);
 char	*ft_strupper(char *str);
 char	ft_getlastchar(char *str);
 int		ft_inset(char c, char const *set);
