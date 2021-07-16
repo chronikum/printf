@@ -6,3 +6,5 @@ settings.json
 main.c
 ft_printf.h.gch
 main_printf_tester.c
+/tester
+.mainctester
