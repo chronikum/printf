@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/15 09:26:23 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/17 15:13:29 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_handle_percent(int *p)
 	return (0);
 }
 
-static int	ft_check_type(char format, va_list args, int *p)
+static int	ft_check_type(char format, va_list args)
 {
 	int	l;
 
@@ -43,8 +43,6 @@ static int	ft_check_type(char format, va_list args, int *p)
 		l += ft_put_hex(va_arg(args, unsigned int), 0);
 	if (format == 'X')
 		l += ft_put_hex(va_arg(args, unsigned int), 1);
-	if (format == '%')
-		l += ft_handle_percent(p);
 	return (l);
 }
 
@@ -57,8 +55,10 @@ static int	ft_print_format(char *format, va_list args, int l)
 	p = 1;
 	while (format[i])
 	{
-		if (format[i - 1] == '%' && ft_is_available_type(format[i]))
-			l += ft_check_type(format[i], args, &p);
+		if ((format[i - 1] == '%' && format[i - 2] != '%') && ft_is_available_type(format[i]))
+			l += ft_check_type(format[i], args);
+		else if (format[i - 1] == '%' && format[i] == '%')
+			l += ft_handle_percent(&p);
 		else if (format[i] != '%')
 			l += ft_putchar(format[i]);
 		if (format[i + 1] != '%')

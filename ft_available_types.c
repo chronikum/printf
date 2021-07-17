@@ -6,16 +6,16 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 09:26:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/12 14:41:42 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/17 15:03:28 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 int	ft_is_available_type(char c)
-{	
+{
 	if (c == 'c' || c == 'd' || c == 'p' || c == 'd' || c == 'i'
-		|| c == 'u' || c == 'x' || c == 'X' || c == 's' || c == '%')
+		|| c == 'u' || c == 'x' || c == 'X' || c == 's')
 		return (1);
 	return (0);
 }
