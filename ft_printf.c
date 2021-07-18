@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 15:21:20 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/17 15:13:29 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/18 09:41:07 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static int	ft_print_format(char *format, va_list args, int l)
 	p = 1;
 	while (format[i])
 	{
-		if ((format[i - 1] == '%' && format[i - 2] != '%') && ft_is_available_type(format[i]))
+		if ((format[i - 1] == '%'
+				&& format[i - 2] != '%') && ft_is_available_type(format[i]))
 			l += ft_check_type(format[i], args);
 		else if (format[i - 1] == '%' && format[i] == '%')
 			l += ft_handle_percent(&p);
